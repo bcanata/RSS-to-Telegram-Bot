@@ -144,7 +144,7 @@ def rss_monitor(context):
                 replacements = [
                     ('<[^<]+?>', ''),
                     ('\&\#8212\;',''),
-                    ('Permalink','')
+                    (' Permalink','')
                 ]
 
                 for old, new in replacements:
