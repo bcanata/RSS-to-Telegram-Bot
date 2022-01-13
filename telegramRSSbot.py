@@ -139,8 +139,10 @@ def rss_monitor(context):
             conn.close()
             rss_load()
             if (rss_d.entries[0]['description']):
+                context.bot.send_message(chatid, "test1")
                 context.bot.send_message(chatid, rss_d.entries[0]['title'] + "\n\n" + rss_d.entries[0]['description'] + "\n\n" + rss_d.entries[0]['link'])
             else:
+                context.bot.send_message(chatid, "test2")
                 context.bot.send_message(chatid, rss_d.entries[0]['title'] + "\n\n" + rss_d.entries[0]['link'])
 
 
