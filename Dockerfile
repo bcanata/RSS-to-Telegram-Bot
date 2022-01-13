@@ -7,6 +7,9 @@ WORKDIR /app
 # Copy the current directory contents into the container at /app
 COPY . /app
 
+RUN ["apt-get", "update"]
+RUN ["apt-get", "-y", "install", "vim"]
+
 # Install any needed packages specified in requirements.txt
 RUN pip install --trusted-host pypi.python.org -r /app/requirements.txt
 # Define environment variable
