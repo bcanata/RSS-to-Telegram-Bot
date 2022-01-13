@@ -149,7 +149,9 @@ def rss_monitor(context):
 
                 for old, new in replacements:
                     desc = re.sub(old, new, desc)
-                context.bot.send_message(chatid, rss_d.entries[0]['title'] + "\n\n" + desc + "\n\n" + rss_d.entries[0]['link'])
+                for tag in d.entries[0].tags:
+                    desc = desc + "#" + tag.term + "\n"
+                context.bot.send_message(chatid, rss_d.entries[0]['title'] + "\n" + desc + "\n" + rss_d.entries[0]['link'])
             else:
                 context.bot.send_message(chatid, rss_d.entries[0]['title'] + "\n\n" + rss_d.entries[0]['link'])
 
