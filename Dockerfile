@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . /app
 
 RUN ["apt-get", "update"]
-RUN ["apt-get", "-y", "install", "vim"]
+RUN ["apt-get", "-y", "install", "nano"]
 
 # Install any needed packages specified in requirements.txt
 RUN pip install --trusted-host pypi.python.org -r /app/requirements.txt
