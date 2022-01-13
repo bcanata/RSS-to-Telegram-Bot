@@ -2,6 +2,7 @@ import feedparser
 import logging
 import sqlite3
 import os
+import re
 from telegram.ext import Updater, CommandHandler
 from pathlib import Path
 
@@ -139,7 +140,7 @@ def rss_monitor(context):
             conn.close()
             rss_load()
             if (rss_d.entries[0]['description']):
-                context.bot.send_message(chatid, rss_d.entries[0]['title'] + "\n\n" + rss_d.entries[0]['description'] + "\n\n" + rss_d.entries[0]['link'], parse_mode='HTML')
+                context.bot.send_message(chatid, rss_d.entries[0]['title'] + "\n\n" + re.sub('<[^<]+?>', '', rss_d.entries[0]['description']) + "\n\n" + rss_d.entries[0]['link'])
             else:
                 context.bot.send_message(chatid, rss_d.entries[0]['title'] + "\n\n" + rss_d.entries[0]['link'])
 
